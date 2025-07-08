@@ -1,0 +1,20 @@
+{% extends 'basicapp/base.html' %}
+
+{% load static %}
+
+{% block title %}Forms | Django Forms App{% endblock %}
+
+{% block content %}
+<div class="form-container" data-aos="fade-up" data-aos-duration="1000">
+    <h1>Fill out the form</h1>
+    <form method="post" action="{% url 'form_page' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    {% if success %}
+        <p class="success-message">Form submitted successfully!</p>
+    {% endif %}
+
+</div>
+{% endblock %}

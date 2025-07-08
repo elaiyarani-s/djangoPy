@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <title>Contact Us</title>
+        <title>Thank You</title>
+    </head>
+    <body>
+        <div class="container w-75" style="text-align: center;">
+            <div class="jumbotron">
+                <h1 class="display-4">Thank You!</h1>
+                <p class="lead">Your message has been successfully sent.</p>
+                <hr class="my-4">
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" >
+            <h2>Lis of All Submissions:</h2>
+        </div>
+        <div class="d-flex justify-content-center" >
+            <ul>
+            {% for contact in contacts %}
+            <li>{{ contact.name }}: {{ contact.message }}</li>
+            {% endfor %}
+            </ul>
+            </div>
+        <footer>
+            <p>&copy; 2025 Lexicon</p>
+        </footer>
+
+    </body>
+</html>

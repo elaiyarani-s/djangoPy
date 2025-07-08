@@ -1,0 +1,26 @@
+{% extends 'contact/base.html' %}
+{% load static %}
+{% block title %}Contact Us Form{% endblock %}
+
+{% block header %}
+    <h1>Contact Us</h1>
+{% endblock %}
+{% block content %}
+    <div class="text-center w-responsive mx-auto mb-5 w-50">
+        <div class="jumbotron">
+            <p>If you have any questions or comments, please fill out the form below:</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div> 
+    </div>
+{% endblock %}

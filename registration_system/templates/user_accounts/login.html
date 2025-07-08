@@ -1,0 +1,27 @@
+{% extends 'user_accounts/base.html' %}
+{% load static %}
+{% block title %}Login | User Registration System{% endblock  %}
+{% block content %}
+{% if messages %}
+<div class="jumbotron mb-4">
+    {% for message in messages %}
+    <div>
+        <p style="color: red;">{{ message }}<br> Please login again</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<div class="jumbotron mb-4">
+    <h2 style="color: palevioletred;">Login Here</h2>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+
+        <label for="username">Username</label> <br />
+        <input type="text" id="username" name="username" required placeholder="Enter username"/> <br />  
+
+        <label for="password">Password</label> <br />
+        <input type="password" id="password" name="password" required placeholder="Enter password"/> <br />  
+        <label><input type="checkbox" name="remember"> Remember me</label><br>
+        <input type="submit" value="Login" />
+    </form>
+{% endblock  %}

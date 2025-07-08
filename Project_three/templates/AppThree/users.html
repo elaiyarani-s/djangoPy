@@ -1,0 +1,45 @@
+{% extends 'AppThree/master.html' %}
+{% load static %}
+{% block title %}User List | My Third App{% endblock %}
+
+{% block content %}
+<h2>Here are your users:</h2>
+
+<ol>
+    {% for user in users %}
+    <li>User Info
+        <ul>
+            <li>First Name: {{ user.first_name}}</li>
+            <li>Last Name: {{ user.last_name }}</li>
+            <li>Email: {{ user.email}}</li>
+        </ul>
+    </li>
+    {% endfor %}
+</ol>
+
+
+{% comment %} <table border="1" cellpadding="8" cellspacing="0"> {% endcomment %}
+    {% comment %} <thead> {% endcomment %}
+        {% comment %} <tr> {% endcomment %}
+            {% comment %} <th>#</th> {% endcomment %}
+            {% comment %} <th>First Name</th> {% endcomment %}
+            {% comment %} <th>Last Name</th> {% endcomment %}
+            {% comment %} <th>Email</th> {% endcomment %}
+        {% comment %} </tr> {% endcomment %}
+    {% comment %} </thead> {% endcomment %}
+    {% comment %} <tbody> {% endcomment %}
+        {% comment %} {% for user in users %} {% endcomment %}
+        {% comment %} <tr> {% endcomment %}
+            {% comment %} <td>{{ forloop.counter }}</td> {% endcomment %}
+            {% comment %} <td>{{ user.first_name }}</td> {% endcomment %}
+            {% comment %} <td>{{ user.last_name }}</td> {% endcomment %}
+            {% comment %} <td>{{ user.email }}</td> {% endcomment %}
+        {% comment %} </tr> {% endcomment %}
+        {% comment %} {% empty %} {% endcomment %}
+        {% comment %} <tr> {% endcomment %}
+            {% comment %} <td colspan="4">No users found.</td> {% endcomment %}
+        {% comment %} </tr> {% endcomment %}
+        {% comment %} {% endfor %} {% endcomment %}
+    {% comment %} </tbody> {% endcomment %}
+{% comment %} </table> {% endcomment %}
+{% endblock %}

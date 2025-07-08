@@ -1,0 +1,14 @@
+{% extends 'user_accounts/base.html' %}
+{% load static %}
+{% block title %}Dashboard | Registration System{% endblock  %}
+{% block content %}
+  <h2>Welcome {{ request.user.username }}</h2>
+
+  {% for message in messages %}
+    <p style="color: green;">{{ message }}</p>
+  {% endfor %}
+
+  <p>Last login: {{ last_login }}</p>
+  <p><a href="{% url 'logout' %}">Logout</a></p>
+
+{% endblock %}

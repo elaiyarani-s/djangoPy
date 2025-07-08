@@ -1,0 +1,35 @@
+{% extends 'AppThree/master.html' %}
+{% load static %}
+
+
+{% block title %}Home | My Third App{% endblock %}
+
+{% block content %}
+    <h1><em>Welcome to My Third App!</em></h1><br> 
+    <p>Here are the access records</p>
+    <div class ="django">
+        {% if access_records %}
+        <table>
+            <thead>
+                <th>Site Name</th>
+                <th>Date Accessed</th>
+            </thead>
+            {% for acc in access_records%}
+            <tr>
+                <td>
+                    {{acc.name}}
+                </td>
+                <td>
+                    {{ acc.date }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>NO ACCESS RECORDS FOUND!</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+

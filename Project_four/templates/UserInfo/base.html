@@ -1,0 +1,35 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="U">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}My Django App{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static "css/styles.css" %}">
+   </head>
+    <body>
+        <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/users">Users</a></li>
+            </ul>
+        </nav>
+        </header>
+        {% block content %}
+        <!-- Content from child templates will be inserted here -->
+        {% endblock %}
+        <footer>
+            <p>&copy; 2025 My Django App</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>   
+    </body>
+</html>
