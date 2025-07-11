@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>{{ skill.title }}</h2>
+  <p><strong>Type:</strong> {{ skill.get_type_display }}</p>
+  <p><strong>Category:</strong> {{ skill.category }}</p>
+  <p><strong>Description:</strong> {{ skill.description }}</p>
+  <p><strong>Location:</strong> {{ skill.location }}</p>
+  <p><strong>Availability:</strong> {{ skill.availability }}</p>
+  <p><strong>Posted by:</strong> {{ skill.user.username }}</p>
+<h3>Reviews</h3>
+<ul>
+{% for review in reviews %}
+    <li>
+    <strong>{{ review.user.username }}</strong> - Rated {{ review.rating }}/5<br>
+    {{ review.comment }}<br>
+    <small>{{ review.created_at|date:"F j, Y" }}</small>
+    </li>
+{% empty %}
+    <li>No reviews yet.</li>
+{% endfor %}
+</ul>
+
+{% if can_review %}
+<h4>Leave a Review</h4>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+</form>
+{% endif %}
+
+  <a href="{% url 'messaging:compose' skill.user.pk %}">Contact</a>
+{% endblock %}

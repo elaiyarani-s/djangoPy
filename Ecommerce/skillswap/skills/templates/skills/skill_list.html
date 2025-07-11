@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>All Skills</h2>
+  <a href="{% url 'skills:create' %}">Post a New Skill</a>
+  <ul>
+    {% for skill in skills %}
+      <li>
+        <a href="{% url 'skills:detail' skill.pk %}">{{ skill.title }}</a> - {{ skill.category }} ({{ skill.get_type_display }})
+      </li>
+    {% empty %}
+      <li>No skills found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

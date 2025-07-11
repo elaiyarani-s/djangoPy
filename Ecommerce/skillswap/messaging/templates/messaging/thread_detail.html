@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Conversation: {{ thread.subject }}</h2>
+
+  <div>
+    {% for message in messages %}
+      <p><strong>{{ message.sender.username }}:</strong> {{ message.body }} <em>({{ message.sent_at }})</em></p>
+    {% endfor %}
+  </div>
+
+  <h3>Send a Reply</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+  </form>
+{% endblock %}
